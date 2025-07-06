@@ -82,6 +82,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]  # For dev (optional)
 STATIC_ROOT = BASE_DIR / 'staticfiles'    # For Render collectstatic
 
+
 # Enable WhiteNoise for static file handling on Render
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
