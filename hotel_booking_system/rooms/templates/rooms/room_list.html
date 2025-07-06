@@ -1,0 +1,15 @@
+{% extends 'rooms/base.html' %}
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Available Rooms</h2>
+<a href="{% url 'room_create' %}" class="bg-green-500 text-white px-4 py-2 rounded">➕ Add Room</a>
+<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+    {% for room in rooms %}
+    <div class="bg-white p-4 rounded shadow">
+        <h3 class="text-lg font-bold">{{ room.room_number }} - {{ room.room_type }}</h3>
+        <p>₹{{ room.price_per_night }} per night</p>
+        <p>Status: {% if room.is_available %}<span class="text-green-600">Available</span>{% else %}<span class="text-red-500">Not Available</span>{% endif %}</p>
+        <a href="{% url 'room_detail' room.pk %}" class="text-blue-600 underline">View Details</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

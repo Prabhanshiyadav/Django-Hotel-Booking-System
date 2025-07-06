@@ -1,0 +1,9 @@
+{% extends 'rooms/base.html' %}
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">{% if form.instance.pk %}Edit Room{% else %}Add Room{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">💾 Save</button>
+</form>
+{% endblock %}

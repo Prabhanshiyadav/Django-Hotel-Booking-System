@@ -1,0 +1,14 @@
+{% extends 'rooms/base.html' %}
+{% block content %}
+<h2 class="text-2xl font-bold">{{ room.room_number }} - {{ room.room_type }}</h2>
+<p class="mt-2">Price: ₹{{ room.price_per_night }}</p>
+<p>Status: {% if room.is_available %}Available{% else %}Not Available{% endif %}</p>
+
+<div class="mt-4">
+    <a href="{% url 'room_edit' room.pk %}" class="bg-yellow-400 text-white px-4 py-2 rounded">✏️ Edit</a>
+    <form method="post" action="{% url 'room_delete' room.pk %}" class="inline">
+        {% csrf_token %}
+        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded">🗑️ Delete</button>
+    </form>
+</div>
+{% endblock %}
