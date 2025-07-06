@@ -1,9 +1,11 @@
 services:
   - type: web
-    name: hotel-booking-system
+    name: django-hotel-booking
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn hotel_booking_system.wsgi:application"
+    buildCommand: ./build.sh
+    startCommand: cd hotel_booking_system && gunicorn hotel_booking_system.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: hotel_booking_system.settings
+      - key: PYTHON_VERSION
+        value: 3.10
